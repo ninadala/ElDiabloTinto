@@ -3,31 +3,3 @@ body {
 }
 
 /* ID */
-
-#newGame {
-    background-color: aqua;
-}
-
-#player1 {
-    background-color: antiquewhite;
-}
-
-#dice{
-    background-color: blue;
-}
-
-#player2 {
-    background-color: antiquewhite;
-}
-
-#current1 {
-    background-color: aqua;
-}
-
-#centralButtons {
-    background-color: aliceblue;
-}
-
-#current2 {
-    background-color: aqua;
-}
