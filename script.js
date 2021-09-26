@@ -1,25 +1,23 @@
+// PROCHAINE ETAPE
+// créer une classe game pour intégrer les querySelector dedans
+
 //AJOUT DES ELEMENTS DU DOM
 let btnNewGame         = document.querySelector('#newGame');
 let btnRoll            = document.querySelector('#roll');
 let btnHold            = document.querySelector('#hold');
 let dice               = document.querySelector('#dice');
 
-let namePlayer1        = document.querySelector('#player1');
-let roundScorePlayer1  = document.querySelector('#roundScorePlayer1');
-let globalScorePlayer1 = document.querySelector('#globalScorePlayer1');
-let icon1              = document.querySelector('#icon1');
-
-let namePlayer2        = document.querySelector('#player2');
-let roundScorePlayer2  = document.querySelector('#roundScorePlayer2');
-let globalScorePlayer2 = document.querySelector('#globalScorePlayer2');
-let icon2              = document.querySelector('#icon2');
-
 //INITIALISATION DE LA CLASSE
 class Player {
-    constructor(pseudo, roundScore, globalScore) {
+    constructor(pseudo, id, roundScore, globalScore) {
         this.pseudo = pseudo;
+        this.id = id;
         this.roundScore = 0;
         this.globalScore = 0;
+        this.namePlayer = document.querySelector('#player'+id);
+        this.roundScorePlayer = document.querySelector('#roundScorePlayer'+id);
+        this.globalScorePlayer = document.querySelector('#globalScorePlayer'+id);
+        this.icon = document.querySelector('#icon'+id);
     }
 
     checkWin() {
@@ -28,31 +26,40 @@ class Player {
             newGame();
         }
     }
+
+    reset() {
+        this.roundScore = 0;
+        this.globalScore = 0;
+        this.roundScorePlayer.innerHTML = 0;
+        this.globalScorePlayer.innerHTML = 0;
+    }
+
+    showRoundScore() {
+        this.roundScorePlayer.innerHTML = this.roundScore;
+    }
+
+    showGlobalScore() {
+        this.globalScorePlayer.innerHTML = this.globalScore;
+    }
 }
 
 
 //VARIABLES GLOBALES
-let currentPlayer = 0;
-let player1 = new Player("player 1");
-let player2 = new Player("player 2");
-icon1.style.display = 'none';
-icon2.style.display = 'none';
+let currentPlayer = null;
+let player1 = new Player("player 1", 1);
+let player2 = new Player("player 2", 2);
+player1.icon.style.display = 'inline';
+player2.icon.style.display = 'none';
 
 //FONCTIONS
 //fonction NEW GAME
 function newGame() {
-    player1.roundScore = 0;
-    player2.roundScore = 0;
-    player1.globalScore = 0;
-    player2.globalScore = 0;
-    roundScorePlayer1.innerHTML = 0;
-    roundScorePlayer2.innerHTML = 0;
-    globalScorePlayer1.innerHTML = 0;
-    globalScorePlayer2.innerHTML = 0;
+    player1.reset();
+    player2.reset();
     dice.innerHTML = 0;
-    currentPlayer = 0;
-    icon1.style.display = 'inline';
-    icon2.style.display = 'none';
+    currentPlayer = player1;
+    player1.icon.style.display = 'inline';
+    player2.icon.style.display = 'none';
 }
 
 //fonction ROLL
@@ -69,6 +76,20 @@ function hold(player) {
     dice.innerHTML = 0;
 }
 
+//fonction PERMUT
+function permut() {
+    if(currentPlayer == player1) {
+        player2.icon.style.display = 'inline';
+        player1.icon.style.display = 'none';
+        currentPlayer = player2;
+    }
+    else {
+        player1.icon.style.display = 'inline';
+        player2.icon.style.display = 'none';
+        currentPlayer = player1;
+    }
+}
+
 //DEROULÉ DU JEU
 btnNewGame.addEventListener('click', newGame);
 
@@ -76,49 +97,21 @@ btnRoll.addEventListener('click', () => {
     let diceRoll = roll();
     dice.innerHTML = diceRoll;
 
-    if(currentPlayer%2 == 0) {
-        icon1.style.display = 'inline';
-        icon2.style.display = 'none'; 
-
-        if(diceRoll == 1) {
-            player1.roundScore = 0;
-            roundScorePlayer1.innerHTML = 0;
-            currentPlayer ++;
-        } else {
-            player1.roundScore += diceRoll;
-            roundScorePlayer1.innerHTML = player1.roundScore;
-            diceRoll == 0;
-        }
+    if(diceRoll == 1) {
+        currentPlayer.roundScore = 0;
+        currentPlayer.roundScorePlayer.innerHTML = 0;
+        permut();
+    } else {
+        currentPlayer.roundScore += diceRoll;
+        currentPlayer.showRoundScore();
+        diceRoll == 0;
     }
-    else {
-        icon2.style.display = 'inline';
-        icon1.style.display = 'none';
-
-        if(diceRoll == 1) {
-            player2.roundScore = 0;
-            roundScorePlayer2.innerHTML = 0;
-            currentPlayer ++;
-        } else {
-            player2.roundScore += diceRoll;
-            roundScorePlayer2.innerHTML = player2.roundScore;
-            diceRoll == 0;
-        }
-    }
-})
+});
 
 btnHold.addEventListener('click', () => {
-    if(currentPlayer%2 == 0) {
-        hold(player1);
-        globalScorePlayer1.innerHTML = player1.globalScore;
-        roundScorePlayer1.innerHTML  = player1.roundScore;
-        currentPlayer ++;
-        player1.checkWin();
-    }
-    else {
-        hold(player2);
-        globalScorePlayer2.innerHTML = player2.globalScore;
-        roundScorePlayer2.innerHTML  = player2.roundScore;
-        currentPlayer ++;
-        player2.checkWin();
-    }
+    hold(currentPlayer);
+    currentPlayer.showGlobalScore();
+    currentPlayer.showRoundScore();
+    currentPlayer.checkWin();
+    permut();
 })
