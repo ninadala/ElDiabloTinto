@@ -81,7 +81,7 @@ btnRoll.addEventListener('click', () => {
         icon2.style.display = 'none'; 
 
         if(diceRoll == 1) {
-            player1.roundScore == 0;
+            player1.roundScore = 0;
             roundScorePlayer1.innerHTML = 0;
             currentPlayer ++;
         } else {
@@ -95,7 +95,7 @@ btnRoll.addEventListener('click', () => {
         icon1.style.display = 'none';
 
         if(diceRoll == 1) {
-            player2.roundScore == 0;
+            player2.roundScore = 0;
             roundScorePlayer2.innerHTML = 0;
             currentPlayer ++;
         } else {
