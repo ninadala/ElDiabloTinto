@@ -2,8 +2,14 @@ body {
     width: 100%;
     height: 100%;
     font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
 }
 
+button {
+    text-transform: uppercase;
+}
+
+/* CLASSES */
 .container {
     margin-top : 10%;
     margin-bottom: 10%;
@@ -14,10 +20,21 @@ body {
     background-color: ghostwhite;
 }
 
-/* CLASSES */
-
 .icon {
     color: red;
+}
+
+.currentScore {
+    background-color: red;
+    width: 50%;
+    padding: 5px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.row {
+    align-content: center;
 }
  
 /* ID */
