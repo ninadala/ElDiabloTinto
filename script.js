@@ -1,13 +1,4 @@
-// PROCHAINE ETAPE
-// créer une classe game pour intégrer les querySelector dedans
-
-//AJOUT DES ELEMENTS DU DOM
-let btnNewGame         = document.querySelector('#newGame');
-let btnRoll            = document.querySelector('#roll');
-let btnHold            = document.querySelector('#hold');
-let dice               = document.querySelector('#dice');
-
-//INITIALISATION DE LA CLASSE
+//CLASSES
 class Player {
     constructor(pseudo, id, roundScore, globalScore) {
         this.pseudo = pseudo;
@@ -43,8 +34,17 @@ class Player {
     }
 }
 
+class Game {
+    constructor() {
+        this.btnNewGame = document.querySelector('#newGame');
+        this.btnRoll = document.querySelector('#roll');
+        this.btnHold = document.querySelector('#hold');
+        this.dice = document.querySelector('#dice');
+    }
+}
 
-//VARIABLES GLOBALES
+
+//GLOBAL VARIABLE
 let currentPlayer = null;
 let player1 = new Player("player 1", 1);
 let player2 = new Player("player 2", 2);
@@ -90,7 +90,7 @@ function permut() {
     }
 }
 
-//DEROULÉ DU JEU
+//GAMEPLAY
 btnNewGame.addEventListener('click', newGame);
 
 btnRoll.addEventListener('click', () => {
