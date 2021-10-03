@@ -1,5 +1,5 @@
-// PROCHAINE ETAPE
-// créer une classe game pour intégrer les querySelector dedans
+// IMPROVEMENTS
+// create a game class to integrate the querySelectors inside.
 
 //AJOUT DES ELEMENTS DU DOM
 let btnNewGame         = document.querySelector('#newGame');
@@ -93,6 +93,8 @@ function permut() {
 }
 
 //DEROULÉ DU JEU
+newGame();
+
 btnNewGame.addEventListener('click', newGame);
 
 btnRoll.addEventListener('click', () => {
