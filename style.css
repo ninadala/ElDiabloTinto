@@ -58,8 +58,23 @@ button {
 
 /* MEDIA QUERIES */
 @media (orientation : portrait) {
-    body {
-        flex-direction: column;
+    #centerCtnr {
+        display: none;
+    }
+
+    #portrait {
+        display: block;
+    }
+    
+}
+
+@media (orientation : landscape) {
+    #centerCtnr {
+        display:flex;
+    }
+
+    #portrait {
+        display: none;
     }
     
 }
