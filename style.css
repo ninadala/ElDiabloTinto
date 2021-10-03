@@ -55,3 +55,12 @@ button {
 #lowCtnr {
     height: 37%
 }
+
+/* MEDIA QUERIES */
+@media (orientation : portrait) {
+    body {
+        flex-direction: column;
+    }
+    
+}
+
