@@ -3,7 +3,6 @@ body {
     height: 100%;
     font-family: 'Lato', sans-serif;
     text-transform: uppercase;
-    background-color: bisque;
 }
 
 button {
@@ -36,13 +35,13 @@ button {
 #centerCtnr {
     height : 80vh;
     width: 80vw;
-    background-color: black;
+    background-color: bisque;
 }
 
 #mainCtnr {
     background-color: ghostwhite;
-    height: 80%;
-    width: 80%;
+    height: 95%;
+    width: 97%;
 }
 
 #highCtnr {
