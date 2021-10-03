@@ -56,6 +56,13 @@ button {
     height: 37%
 }
 
+#portrait {
+    font-size: large;
+    font-weight: bold;
+    margin-top: 50vh;
+    text-align: center;
+}
+
 /* MEDIA QUERIES */
 @media (orientation : portrait) {
     #centerCtnr {
