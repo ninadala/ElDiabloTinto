@@ -19,6 +19,10 @@ button {
     color: red;
 }
 
+.lowIcon {
+    min-width: 50%;
+}
+
 .currentScore {
     background-color: red;
     width: 50%;
@@ -74,6 +78,7 @@ button {
 #rollCtnr {
     margin-bottom: 7%;
 }
+
 
 /* MEDIA QUERIES */
 @media (orientation : portrait) {
