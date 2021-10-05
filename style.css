@@ -64,6 +64,17 @@ button {
     text-align: center;
 }
 
+#centralButtons {
+    justify-content: space-between;
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+
+#rollCtnr {
+    margin-bottom: 7%;
+}
+
 /* MEDIA QUERIES */
 @media (orientation : portrait) {
     #centerCtnr {
