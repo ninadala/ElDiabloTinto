@@ -36,6 +36,7 @@ button {
     height : 80vh;
     width: 80vw;
     background-color: bisque;
+    margin-top: 5%;
 }
 
 #mainCtnr {
@@ -85,4 +86,5 @@ button {
     }
     
 }
+
 
