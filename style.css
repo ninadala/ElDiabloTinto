@@ -87,4 +87,9 @@ button {
     
 }
 
+@media screen and (max-width: 800px) {
+    #centerCtnr {
+        margin-top: 1%;
+    }
+}
 
